@@ -8,6 +8,7 @@
   },
   "dependencies": {
     "electron": "^1.7.9",
+    "is-electron-renderer": "^2.0.1",
     "standard": "^10.0.3"
   },
   "devDependencies": {

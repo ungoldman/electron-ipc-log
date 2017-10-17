@@ -1,19 +1,20 @@
-function addLoggingToElectronIPC (log) {
-  var { ipcRenderer, ipcMain } = require('electron')
+var isRenderer = require('is-electron-renderer')
+var electron = require('electron')
+
+function electronIpcLog (log) {
+  var ipc
+
+  if (isRenderer) ipc = electron.ipcRenderer
+  else ipc = electron.ipcMain
   if (log == null) log = console.log
 
-  var mainEmit = ipcMain.emit
-  var rendererEmit = ipcRenderer.emit
+  var oldEmit = ipc.emit
+  var scope = isRenderer ? 'renderer' : 'main'
 
-  ipcMain.emit = function (name, e, ...args) {
-    log(`[ipc:main] ${name} ${args.join(', ')}`)
-    mainEmit.call(ipcMain, name, e, ...args)
-  }
-
-  ipcRenderer.emit = function (name, e, ...args) {
-    log(`[ipc:renderer] ${name} ${args.join(', ')}`)
-    rendererEmit.call(ipcRenderer, name, e, ...args)
+  ipc.emit = function (name, e, ...args) {
+    log(`[ipc:${scope}] ${name} ${args.join(', ')}`)
+    oldEmit.call(ipc, name, e, ...args)
   }
 }
 
-module.exports = addLoggingToElectronIPC
+module.exports = electronIpcLog
