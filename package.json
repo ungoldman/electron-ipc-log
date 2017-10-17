@@ -1,0 +1,36 @@
+{
+  "name": "electron-ipc-log",
+  "description": "log all ipc traffic in electron",
+  "version": "1.0.0",
+  "author": "Nate Goldman <ungoldman@gmail.com> (http://ungoldman.com/)",
+  "bugs": {
+    "url": "https://github.com/ungoldman/electron-ipc-log/issues"
+  },
+  "dependencies": {
+    "electron": "^1.7.9",
+    "standard": "^10.0.3"
+  },
+  "devDependencies": {
+    "electron": "^1.7.9",
+    "standard": "^10.0.3"
+  },
+  "homepage": "https://github.com/ungoldman/electron-ipc-log#readme",
+  "keywords": [
+    "electron",
+    "ipc",
+    "ipcMain",
+    "ipcRenderer",
+    "log",
+    "logging"
+  ],
+  "license": "ISC",
+  "main": "index.js",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ungoldman/electron-ipc-log.git"
+  },
+  "scripts": {
+    "start": "node .",
+    "test": "standard"
+  }
+}
