@@ -13,7 +13,8 @@
   },
   "devDependencies": {
     "electron": "^1.7.9",
-    "standard": "^10.0.3"
+    "standard": "^10.0.3",
+    "standard-version": "^4.2.0"
   },
   "homepage": "https://github.com/ungoldman/electron-ipc-log#readme",
   "keywords": [
@@ -31,6 +32,8 @@
     "url": "git+https://github.com/ungoldman/electron-ipc-log.git"
   },
   "scripts": {
+    "prerelease": "npm t && standard-version",
+    "release": "git push --follow-tags origin master",
     "start": "node .",
     "test": "standard"
   }
