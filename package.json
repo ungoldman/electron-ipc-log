@@ -7,8 +7,7 @@
     "url": "https://github.com/ungoldman/electron-ipc-log/issues"
   },
   "dependencies": {
-    "is-electron-renderer": "^2.0.1",
-    "standard": "^10.0.3"
+    "is-electron-renderer": "^2.0.1"
   },
   "devDependencies": {
     "electron": "^1.7.9",
