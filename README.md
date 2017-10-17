@@ -24,20 +24,22 @@ npm install electron-ipc-log
 ```js
 var electronIpcLog = require('electron-ipc-log')
 
-electronIpcLog(console.log)
+electronIpcLog(function (channel, event, ...data) {
+  console.log(channel, data)
+})
 ```
 
 ### API
 
-#### `electronIpcLog(log)`
+#### `electronIpcLog(log: function)`
 
-Accepts a logging function (`log`). Defaults to `console.log` if none is provided.
+Accepts a logging function with parameters `(channel: string, event: object, ...data)`, where data is any number of arguments passed by the user via IPC. These are the same arguments passed to the `emit` method used internally by `ipcMain` and `ipcRenderer`.
 
 Needs to be called once in main process and once in renderer process.
 
-**Note:** this is module monkey patches the `emit` method of `ipcMain` (or `ipcRenderer` depending on the context). It's not ideal but I don't know of another way of hooking into electron IPC events at the time of this writing.
+All internal electron IPC messages (prefixed with `ELECTRON`, e.g. `ELECTRON_BROWSER_REQUIRE`) are ignored, as they are very noisy and not useful for most use cases. I'm open to adding a config option for verbose logging if someone really needs it.
 
-I'm ignoring all internal electron IPC messages (all prefixed with `ELECTRON`, e.g. `ELECTRON_BROWSER_REQUIRE`) as they are very noisy and not useful for most use cases. I'm open to adding a config option for verbose logging if someone needs it.
+**Note:** this module monkey patches the `emit` method of `ipcMain` (or `ipcRenderer` depending on the context). It's not ideal but I don't know of another way of hooking into electron IPC events at this time.
 
 ## Contributing
 
