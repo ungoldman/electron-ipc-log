@@ -2,6 +2,16 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+<a name="2.0.1"></a>
+## [2.0.1](https://github.com/ungoldman/electron-ipc-log/compare/v2.0.0...v2.0.1) (2017-10-17)
+
+
+### Bug Fixes
+
+* **docs:** update API description ([3d1030a](https://github.com/ungoldman/electron-ipc-log/commit/3d1030a))
+
+
+
 <a name="2.0.0"></a>
 # [2.0.0](https://github.com/ungoldman/electron-ipc-log/compare/v1.0.2...v2.0.0) (2017-10-17)
 
