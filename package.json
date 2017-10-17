@@ -1,13 +1,12 @@
 {
   "name": "electron-ipc-log",
-  "description": "log all ipc traffic in electron",
+  "description": "Log all user-defined IPC traffic in an electron app.",
   "version": "1.0.0",
   "author": "Nate Goldman <ungoldman@gmail.com> (http://ungoldman.com/)",
   "bugs": {
     "url": "https://github.com/ungoldman/electron-ipc-log/issues"
   },
   "dependencies": {
-    "electron": "^1.7.9",
     "is-electron-renderer": "^2.0.1",
     "standard": "^10.0.3"
   },
