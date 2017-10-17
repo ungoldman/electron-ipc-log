@@ -2,6 +2,21 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+<a name="2.0.0"></a>
+# [2.0.0](https://github.com/ungoldman/electron-ipc-log/compare/v1.0.2...v2.0.0) (2017-10-17)
+
+
+### Features
+
+* pass emit args directly to log function ([8f920dc](https://github.com/ungoldman/electron-ipc-log/commit/8f920dc))
+
+
+### BREAKING CHANGES
+
+* changed function signature of primary export
+
+
+
 <a name="1.0.2"></a>
 ## [1.0.2](https://github.com/ungoldman/electron-ipc-log/compare/v1.0.1...v1.0.2) (2017-10-17)
 
