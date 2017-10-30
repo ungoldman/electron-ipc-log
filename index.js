@@ -1,6 +1,8 @@
 var isRenderer = require('is-electron-renderer')
 var electron = require('electron')
 
+const internal = ['CHROME', 'ELECTRON']
+
 function electronIpcLog (log) {
   var ipc = isRenderer ? electron.ipcRenderer : electron.ipcMain
   var oldEmit = ipc.emit
@@ -9,7 +11,8 @@ function electronIpcLog (log) {
 
   ipc.emit = function (channel, event, ...data) {
     // only log user defined ipc messages
-    if (channel.indexOf('ELECTRON') === -1) log(channel, event, ...data)
+    const isInteral = internal.some(str => channel.indexOf(str) !== -1)
+    if (!isInteral) log(channel, event, ...data)
     oldEmit.call(ipc, channel, event, ...data)
   }
 }
