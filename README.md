@@ -24,8 +24,12 @@ npm install electron-ipc-log
 ```js
 var electronIpcLog = require('electron-ipc-log')
 
-electronIpcLog(function (channel, event, ...data) {
-  console.log(channel, data)
+electronIpcLog(event => {
+  var { channel, data, sent, sync } = event
+  var args = [sent ? '⬆️' : '⬇️', channel, ...data]
+  if (sync) args.unshift('ipc:sync')
+  else args.unshift('ipc')
+  console.log.apply(console.log, args)
 })
 ```
 
@@ -33,13 +37,18 @@ electronIpcLog(function (channel, event, ...data) {
 
 #### `electronIpcLog(log: function)`
 
-Accepts a logging function with parameters `(channel: string, event: object, ...data)`, where data is any number of arguments passed by the user via IPC. These are the same arguments passed to the `emit` method used internally by `ipcMain` and `ipcRenderer`.
+Accepts a logging function with parameters `(event: object)`, where event is an object `{ channel:string, data:object, sent:bool, sync:bool }`.
 
-Needs to be called once in main process and once in renderer process.
+- `channel` - name of the channel the message was sent through.
+- `data` - any number of arguments passed by the user via IPC.
+- `sent` - true if sent via `ipcRenderer.send` or `ipcRenderer.sendSync` (`ipcRenderer` only)
+- `sync` - true if synchronous (`ipcRenderer` only)
 
-All internal electron IPC messages (prefixed with `ELECTRON`, e.g. `ELECTRON_BROWSER_REQUIRE`) are ignored, as they are very noisy and not useful for most use cases. I'm open to adding a config option for verbose logging if someone really needs it.
+Needs to be called once per process, so for example if you have one main process and two renderer windows, and you want to log IPC traffic in each process, you need to call `electronIpcLog` in each process.
 
-**Note:** this module monkey patches the `emit` method of `ipcMain` (or `ipcRenderer` depending on the context). It's not ideal but I don't know of another way of hooking into electron IPC events at this time.
+All internal electron IPC messages (prefixed with `ELECTRON` or `CHROME`, e.g. `ELECTRON_BROWSER_REQUIRE`) are ignored, as they are very noisy and not useful for most use cases. I'm open to adding a config option for verbose logging if someone really needs it.
+
+**Note:** this module monkey patches the `emit`, `send`, and `sendSync` methods of `ipcRender` (or just `ipcMain.emit` depending on the context). It's not ideal but I don't know of another way of hooking into electron IPC events at this time. This is the method [`devtron`](https://github.com/electron/devtron/) uses.
 
 ## Contributing
 
