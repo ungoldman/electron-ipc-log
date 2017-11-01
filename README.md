@@ -2,16 +2,19 @@
 
 Log all user-defined IPC traffic in an electron app.
 
-[![npm][npm-image]][npm-url]
-[![travis][travis-image]][travis-url]
-[![standard][standard-image]][standard-url]
+[![npm][1]][2]
+[![travis][3]][4]
+[![standard][5]][6]
+[![downloads][7]][2]
 
-[npm-image]: https://img.shields.io/npm/v/electron-ipc-log.svg?style=flat-square
-[npm-url]: https://www.npmjs.com/package/electron-ipc-log
-[travis-image]: https://img.shields.io/travis/ungoldman/electron-ipc-log.svg?style=flat-square
-[travis-url]: https://travis-ci.org/ungoldman/electron-ipc-log
-[standard-image]: https://img.shields.io/badge/code%20style-standard-brightgreen.svg?style=flat-square
-[standard-url]: http://npm.im/standard
+[1]: https://img.shields.io/npm/v/electron-ipc-log.svg?style=flat-square
+[2]: https://www.npmjs.com/package/electron-ipc-log
+[3]: https://img.shields.io/travis/ungoldman/electron-ipc-log/master.svg?style=flat-square
+[4]: https://travis-ci.org/ungoldman/electron-ipc-log
+[5]: https://img.shields.io/badge/code%20style-standard-brightgreen.svg?style=flat-square
+[6]: http://standardjs.com/
+[7]: https://img.shields.io/npm/dm/electron-ipc-log.svg?style=flat-square
+
 
 ## Install
 
