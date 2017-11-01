@@ -16,7 +16,7 @@ function handleRenderer (log) {
 
   ipcRenderer.emit = function (channel, event, ...data) {
     trackEvent(log, channel, data)
-    oldEmit.call(ipcRenderer, channel, event, ...data)
+    return oldEmit.apply(ipcRenderer, arguments)
   }
 
   ipcRenderer.send = function (channel, ...data) {
@@ -38,7 +38,7 @@ function handleMain (log) {
 
   ipcMain.emit = function (channel, event, ...data) {
     trackEvent(log, channel, data)
-    oldEmit.call(ipcMain, channel, event, ...data)
+    return oldEmit.apply(ipcMain, arguments)
   }
 }
 
