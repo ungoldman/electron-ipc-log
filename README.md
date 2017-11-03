@@ -32,7 +32,7 @@ electronIpcLog(event => {
   var args = [sent ? '⬆️' : '⬇️', channel, ...data]
   if (sync) args.unshift('ipc:sync')
   else args.unshift('ipc')
-  console.log.apply(console.log, args)
+  console.log(...args)
 })
 ```
 
