@@ -1,3 +1,7 @@
+**DEPRECATED ⚠️  - This package is no longer maintained.**
+
+---
+
 # electron-ipc-log
 
 Log all user-defined IPC traffic in an electron app.
